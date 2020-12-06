@@ -1,1 +1,1 @@
-I thought {verbing} was a very {adjective} idea. In swimming class, we needed to swim extremely {adverb}, or else we would have to swim longer.
+I thought{verb-ing} was a very{adjective} idea. In swimming class, we needed to swim extremely{adverb}, or else we would have to swim longer.

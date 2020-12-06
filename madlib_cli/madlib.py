@@ -1,33 +1,49 @@
 import re
-
-#read the file
-
+"""
+read the file
+"""
 def read_template():
 
   with open('assetes/mad.txt', 'r') as file:
     content=file.read()
     file.close()
-    return print(content)
-
-
-# read_template()
-
-# ansers from user 
-verbing=input('enter a verb-ing : ')
-adjective=input('enter a adjective : ')
-adverb=input('enter a adverb : ')
-anser=[verbing,adjective,adverb]
+    return content
 
 
 def parse(fun):
-    data=re.findall(r"\{(.*?)\}",fun)
-    return data
+    words=[]
+    data=re.findall(r"\{.*?\}",fun)
+    
+    text = re.sub("{[^}]*}", " {}", fun)
+    for i in data:
+        words.append(i.strip("{ }"))
+    return data,text
+     
 
-def merge(string,anser):
-    sentens = string.format(*anser)
+def merge(data,anser):
+    sentens = data.format(*anser)
     return sentens
 
 
 
+def copyFile(text):
+    
+    print(text)
+    file = open('assetes/mad2.txt','w')
+    file.write(text)
 
-# data=re.findall(r"\{(.*?)\}",read_template()
+
+
+if __name__ == "__main__":
+  
+    content = read_template()
+    parts =parse(content)
+
+    anser=[]
+    for i in parts[0]:
+        msg=input("enter a " +i + " : " )
+        anser.append(msg)
+    
+   
+    copy = merge(parts[1],anser)
+    copyFile(copy)
